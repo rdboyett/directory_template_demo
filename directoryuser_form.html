@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                  <h1></h1>
+                  <form id="update_shortened_link_form" class="form-inline" action="" method="post">{% csrf_token %}
+                    {{ form|crispy }}
+                    <hr>
+                    <button type="submit" class="btn btn-default btn-xl">Update</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}

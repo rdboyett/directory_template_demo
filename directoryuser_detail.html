@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                {% if directoryUser %}
+                    <h1 class="section-heading">{{ request.user.get_full_name  }}</h1>
+                    <hr class="light">
+                    <p class="text-faded">subject:  {{ directoryUser.subject }}</p>
+                    <p class="text-faded">room:  {{ directoryUser.room }}</p>
+                    <p class="text-faded">phone ext:  {{ directoryUser.phoneExt }}</p>
+                    <a href="{% url 'directory:update' directoryUser.id %}" class="btn btn-default btn-xl">Edit Link</a>
+                    <a href="{% url 'directory:delete' directoryUser.id %}" class="btn btn-danger btn-xl">Delete Link</a>
+                {% else %}
+                    <h2 class="section-heading">Sorry, there is no record.</h2>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    
+
+{% endblock content %}

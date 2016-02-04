@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <a href="{% url 'directory:create' %}" class="btn btn-primary">Create New Item</a>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                {% if directoryList %}
+                  <div class="list-group">
+                    {% for directoryUser in directoryList %}
+                      <a href="{{ directoryUser.get_absolute_url }}" class="list-group-item">
+                        <h3 class="">{{ directoryUser.user.first_name|capfirst }} {{ directoryUser.user.last_name|capfirst }}</h3>
+                        <div class="">subject: {{ directoryUser.subject }}</div>
+                        <div class="">room: {{ directoryUser.room }}</div>
+                        <div class="">phone extension: {{ directoryUser.phoneExt }}</div>
+                      </a>
+                    {% endfor %}
+                  </div>
+                {% else %}
+                    <h2 class="section-heading">Sorry, there is no one in the directory.</h2>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+{% endblock content %}
